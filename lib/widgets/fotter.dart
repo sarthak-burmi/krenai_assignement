@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:krenai_assignement/const/app_text_style.dart';
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class Footer extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.brightness_2_rounded, size: 24),
+              icon: const Icon(Icons.tab, size: 24),
             ),
             const SizedBox(width: 16),
             IconButton(
@@ -45,31 +46,42 @@ class Footer extends StatelessWidget {
         ),
         const Divider(thickness: 1, indent: 40, endIndent: 40),
         // Contact Details
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Column(
             children: [
               Text(
                 'support@classystore',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                style: AppTextStyles.body
+                    .copyWith(fontSize: 12), // Use AppTextStyles
               ),
-              SizedBox(height: 4),
-              Text('+12 123 456 7896', style: TextStyle(fontSize: 14)),
-              SizedBox(height: 4),
-              Text('08:00 - 22:00 - Everyday', style: TextStyle(fontSize: 14)),
+              const SizedBox(height: 4),
+              Text('+12 123 456 7896',
+                  style: AppTextStyles.body
+                      .copyWith(fontSize: 12)), // Use AppTextStyles
+              const SizedBox(height: 4),
+              Text('08:00 - 22:00 - Everyday',
+                  style: AppTextStyles.body
+                      .copyWith(fontSize: 12)), // Use AppTextStyles
             ],
           ),
         ),
         const Divider(thickness: 1, indent: 40, endIndent: 40),
         // Footer Navigation Links
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 12),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text('About', style: TextStyle(fontSize: 14)),
-              Text('Contact', style: TextStyle(fontSize: 14)),
-              Text('Blog', style: TextStyle(fontSize: 14)),
+              Text('About',
+                  style: AppTextStyles.body
+                      .copyWith(fontSize: 12)), // Use AppTextStyles
+              Text('Contact',
+                  style: AppTextStyles.body
+                      .copyWith(fontSize: 12)), // Use AppTextStyles
+              Text('Blog',
+                  style: AppTextStyles.body
+                      .copyWith(fontSize: 12)), // Use AppTextStyles
             ],
           ),
         ),

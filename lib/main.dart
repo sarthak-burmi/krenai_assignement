@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MainPage> {
       backgroundColor: Colors.white,
       key: scaffoldKey,
       appBar: appBar(
-        totalCount: productController.totalProducts.toString(),
+        totalCount: productController.totalProducts,
         isProductPage: true,
         context,
         scaffoldKey,

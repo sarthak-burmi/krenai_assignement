@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:krenai_assignement/const/app_text_style.dart';
+import 'package:krenai_assignement/controller/product_controller.dart';
 
 PreferredSize appBar(
   BuildContext context,
   GlobalKey<ScaffoldState> scaffoldKey, {
   bool showBackButton = false,
   bool isProductPage = true,
-  String totalCount = '0 APPAREL',
+  int totalCount = 0,
 }) {
+  final ProductController productController = Get.find();
   return PreferredSize(
     preferredSize: Size.fromHeight(isProductPage ? 170 : 80),
     child: Column(
@@ -74,14 +79,9 @@ PreferredSize appBar(
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        '$totalCount PRODUCTS',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
+                      Obx(() => Text(
+                          '${productController.totalProducts} PRODUCTS', // Use Obx to reactively get the total count
+                          style: AppTextStyles.subheading)),
                       Row(
                         children: [
                           // Dropdown for "New"
@@ -94,15 +94,9 @@ PreferredSize appBar(
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: const Row(
+                            child: Row(
                               children: [
-                                Text(
-                                  'New',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                  ),
-                                ),
+                                Text('New', style: AppTextStyles.body),
                                 Icon(Icons.arrow_drop_down, size: 18),
                               ],
                             ),
@@ -133,9 +127,9 @@ PreferredSize appBar(
                   // Conditionally render Filter Tags only on Product Page
                   Row(
                     children: [
-                      _buildFilterTag('Kitchen and Untincils'),
+                      _buildFilterTag('Kitchen and utensil'),
                       const SizedBox(width: 8),
-                      _buildFilterTag('All apparel'),
+                      _buildFilterTag('All products'),
                     ],
                   )
                 ],
@@ -159,13 +153,7 @@ Widget _buildFilterTag(String label) {
     ),
     child: Row(
       children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Colors.black,
-          ),
-        ),
+        Text(label, style: AppTextStyles.body.copyWith(fontSize: 12)),
         const SizedBox(width: 6),
         const Icon(
           Icons.close,

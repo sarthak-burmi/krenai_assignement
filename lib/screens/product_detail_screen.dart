@@ -29,7 +29,7 @@ class ProductDetailPage extends StatelessWidget {
 
     return Scaffold(
       appBar: appBar(
-        totalCount: productController.totalProducts.toString(),
+        totalCount: productController.totalProducts,
         isProductPage: false,
         context,
         GlobalKey<ScaffoldState>(), // You can pass the scaffold key if needed
